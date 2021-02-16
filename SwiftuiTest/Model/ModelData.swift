@@ -9,7 +9,9 @@ import Foundation
 import Combine
 
 final class ModelData:ObservableObject{
+    // 需要更改的属性标签：@Published
     @Published var landmarks: [Landmark] = load("landmarkData.json")
+    var hikes: [Hike] = load("hikeData.json")
 }
 
 func load<T: Decodable>(_ filename: String) -> T {
