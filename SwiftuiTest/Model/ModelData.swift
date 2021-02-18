@@ -12,6 +12,7 @@ final class ModelData:ObservableObject{
     // 需要更改的属性标签：@Published
     @Published var landmarks: [Landmark] = load("landmarkData.json")
     var hikes: [Hike] = load("hikeData.json")
+    @Published var profile = Profile.default
     
     var features: [Landmark] {
         landmarks.filter { $0.isFeatured }
