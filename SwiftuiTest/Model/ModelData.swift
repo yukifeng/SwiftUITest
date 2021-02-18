@@ -12,6 +12,18 @@ final class ModelData:ObservableObject{
     // 需要更改的属性标签：@Published
     @Published var landmarks: [Landmark] = load("landmarkData.json")
     var hikes: [Hike] = load("hikeData.json")
+    
+    var features: [Landmark] {
+        landmarks.filter { $0.isFeatured }
+    }
+    
+    var categories: [String : [Landmark]] {
+        Dictionary(
+            grouping: landmarks,
+            by: {$0.category.rawValue}
+        )
+    }
+    
 }
 
 func load<T: Decodable>(_ filename: String) -> T {
